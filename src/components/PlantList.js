@@ -16,7 +16,6 @@ componentDidMount() {
   });
 }
 
-
 render() {
   return (
     <main className="plant-list">
