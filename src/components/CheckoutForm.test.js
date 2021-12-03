@@ -2,7 +2,7 @@ import React from "react";
 import {render, screen} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import CheckoutForm from "./CheckoutForm";
-import { exp } from "prelude-ls";
+
 
 test ("form header renders", () => {
     render(<CheckoutForm/>);
@@ -22,7 +22,7 @@ expect(address).toBeInTheDocument();
 expect(city).toBeInTheDocument();
 expect(state).toBeInTheDocument();
 expect(zip).toBeInTheDocument();
-expect(buttong).toBeInTheDocument();
+
 
 //Asserting
 expect(checkoutFormHeader).toBeVisible();
