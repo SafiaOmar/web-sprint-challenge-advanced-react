@@ -3,12 +3,12 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import CheckoutForm from "./CheckoutForm";
 
-const firstName = "Tawnya";
-const lastName = "Wessar";
-const address = "5665 West Ave";
-const city = "Marysville";
-const state = "California";
-const zipCode = "00420";
+const firstName = "Sofia";
+const lastName = "Omar";
+const address = "1111 Code St";
+const city = "Columbus";
+const state = "Ohio";
+const zipCode = "43220";
 
 test( "form header renders", () => {
 	render( <CheckoutForm/> );
