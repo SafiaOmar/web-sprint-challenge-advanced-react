@@ -1,69 +1,35 @@
 import React from "react";
-import {render, screen} from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import CheckoutForm from "./CheckoutForm";
 
+const firstName = "Tawnya";
+const lastName = "Wessar";
+const address = "5665 West Ave";
+const city = "Marysville";
+const state = "California";
+const zipCode = "00420";
 
-test ("form header renders", () => {
-    render(<CheckoutForm/>);
-    const checkoutFormHeader = screen.getByText(/Checkout Form/i);
-    const firstName = screen.getByText(/First Name/i);
-    const lastName = screen.getByText(/Last Name/i);
-    const address = screen.getByText(/Address/i);
-    const city = screen.getByText(/City/i);
-    const state = screen.getByText(/State/i);
-    const zip = screen.getByText(/Zip/i);
-    const button = screen.getByRole("button", {name: /checkout/i});
+test( "form header renders", () => {
+	render( <CheckoutForm/> );
 
-expect(CheckoutForm).toBeInTheDocument();
-expect(firstName).toBeInTheDocument();
-expect(lastName).toBeInTheDocument();
-expect(address).toBeInTheDocument();
-expect(city).toBeInTheDocument();
-expect(state).toBeInTheDocument();
-expect(zip).toBeInTheDocument();
+	expect( screen.getByText( /Checkout Form/i ) );
+} );
 
+test( "form shows success message on submit with form details", async () => {
+	render( <CheckoutForm/> );
 
-//Asserting
-expect(checkoutFormHeader).toBeVisible();
-expect(firstName).toBeVisible();
-expect(lastName).toBeVisible();
-expect(address).toBeVisible();
-expect(city).toBeVisible();
-expect(state).toBeVisible();
-expect(zip).toBeVisible();
-expect(button).toBeVisible();
-});
+	const firstInput = screen.getByLabelText( /first/i );
+	const lastInput = screen.getByLabelText( /last/i );
+	const addressInput = screen.getByLabelText( /address/i );
+	const cityInput = screen.getByLabelText( /city/i );
+	const stateInput = screen.getByLabelText( /state/i );
+	const zipInput = screen.getByLabelText( /zip/i );
 
-test("form shows success message on submit with form details", () => {
-    render(<CheckoutForm/>);
-
-//Arranging
-const checkoutFormHeader = screen.getByText(/Checkout Form/i);
-const firstName = screen.getByText(/First Name/i);
-const lastName = screen.getByText(/Last Name/i);
-const address = screen.getByText(/Address/i);
-const city = screen.getByText(/City/i);
-const state = screen.getByText(/State/i);
-const zip = screen.getByText(/Zip/i);
-const button = screen.getByRole("button", {name: /checkout/i});
-
-//Act
-userEvent.type(firstName, "Mike");
-userEvent.type(lastName, "Jones");
-userEvent.type(address, "132 Dallas Drive");
-userEvent.type(city, "Huston");
-userEvent.type(state, "Texas");
-userEvent.type(zip, "92813");
-userEvent.click(button);
-
-//Asserting
-const orderProcessedMessage = screen.getByText(/green friends/i);
-const customerDetails = screen.getByText(/Mike/i);
-
-expect(orderProcessedMessage).toBeTruthy();
-expect(customerDetails).toBeTruthy();
-
-expect(orderProcessedMessage).toBeVisible();
-expect(customerDetails).toBeVisible();
-}); 
+	await userEvent.type( firstInput, firstName );
+	await userEvent.type( lastInput, lastName );
+	await userEvent.type( addressInput, address );
+	await userEvent.type( cityInput, city );
+	await userEvent.type( stateInput, state );
+	await userEvent.type( zipInput, zipCode );
+}

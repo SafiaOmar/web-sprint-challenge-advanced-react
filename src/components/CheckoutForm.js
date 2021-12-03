@@ -1,12 +1,13 @@
+
 import React, { useState } from "react";
 
 const initialValue = {
-  firstName: "Sofie",
-  lastName: "Omar",
-  address: "1111 Code St",
-  city: "Columbus",
-  state: "OH",
-  zip: "43220",
+  firstName: "",
+  lastName: "",
+  address: "",
+  city: "",
+  state: "",
+  zip: "",
 };
 
 // This form should be handled by a "useForm" custom hook
@@ -72,9 +73,9 @@ const CheckoutForm = (props) => {
       {showSuccessMessage && (
         <div className="success-message" data-testid="successMessage">
           <p>
-           Here today, tarragon tomorrow. <span role="img">🌱</span>
+            You have ordered some plants! Woo-hoo! <span role="img">🎉</span>
           </p>
-          <p>Thank You for your order <span role="img">🌱</span></p>
+          <p>Your new green friends will be shipped to:</p>
           <br />
           <br />
           <p>
